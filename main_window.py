@@ -1,9 +1,8 @@
-from PySide6.QtWidgets import (QApplication, QLabel,  QMainWindow, QVBoxLayout,
-                               QWidget)
+from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QWidget
 
 class MainWindow(QMainWindow):
-    def __init__(self, parent= None, *args, **kwargs): # type: ignore
-        super().__init__(parent)
+    def __init__(self, parent: QWidget | None = None, *args, **kwargs) -> None: # type: ignore
+        super().__init__(parent, *args, **kwargs)
 
         self.cw = QWidget()
         self.v_layout = QVBoxLayout()
@@ -15,3 +14,6 @@ class MainWindow(QMainWindow):
     def adjustFixedSize(self):
         self.adjustSize()
         self.setFixedSize(self.width(), self.height())
+
+    def addWidgetToVLayout(self, widget: QWidget):
+        self.v_layout.addWidget(widget)

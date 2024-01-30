@@ -1,13 +1,13 @@
 import sys
 
-from main_window import MainWindow
+from buttons import ButtonsGrid
 from display import Display
 from info import Info
+from main_window import MainWindow
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication
-from variables import WINDOW_ICON_PATH
 from styles import setupTheme
-from buttons import Button
+from variables import WINDOW_ICON_PATH
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
@@ -18,14 +18,14 @@ if __name__ == '__main__':
     window.setWindowIcon(icon)
     app.setWindowIcon(icon)
 
-    info = Info('2.0 ^ 10.0 = 1024')
-    window.addToVLayout(info)
+    info = Info('Sua conta')
+    window.addWidgetToVLayout(info)
 
     display = Display()
-    window.addToVLayout(display)
+    window.addWidgetToVLayout(display)
 
-    button = Button('Texto do botão')
-    window.addToVLayout(button)
+    buttonsGrid = ButtonsGrid(display, info, window)
+    window.vLayout.addLayout(buttonsGrid)
 
     window.adjustFixedSize()
     window.show()
